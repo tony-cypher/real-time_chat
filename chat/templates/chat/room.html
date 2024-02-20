@@ -1,0 +1,25 @@
+{% extends 'chat/base.html' %}
+{% block title %}
+ROOMS
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    {{ room.name }}'s Group
+
+    <div id="chat-messages">
+        {% for message in messages %}
+        {{ message.user}}: {{message.message}} <br>
+        {% endfor %}
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input id="message-input" type="text" name="message" placeholder="Enter message">
+        <button id="send" type="submit">Send</button>
+    </form>
+
+    {{ room.slug|json_script:"json-roomname" }}
+    {{ request.user.username|json_script:'json-username' }}
+</div>
+{% endblock %}

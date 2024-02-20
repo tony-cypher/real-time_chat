@@ -1,0 +1,16 @@
+{% extends 'chat/base.html' %}
+{% block title %}
+GROUPS
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">LIST OF GROUPS</h1>
+
+    {% for room in chatrooms %}
+    <a href="{% url 'room' room.slug  %}">
+        <p>{{ room }}</p>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
